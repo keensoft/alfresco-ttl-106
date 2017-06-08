@@ -24,8 +24,6 @@ Alfresco Content service will be running at:
 Architecture
 ------------
 
-![Architecture diagram](architecture.png)
-
 * `alfresco` service
   - Including a Tomcat app server listening at port 8080
 * `db` service
