@@ -1,0 +1,656 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Alfresco TTL 106",
+		"_postman_id": "fffc506d-eada-f43a-c7d2-4e20335ad606",
+		"description": "Samples used during Alfresco Tech Talk Live 106",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1 - Create folder",
+			"request": {
+				"url": "http://localhost:8080/alfresco/api/-default-/public/alfresco/versions/1/nodes/-my-/children",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\":\"My Folder\",\n  \"nodeType\":\"cm:folder\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "2 - Create content with name",
+			"request": {
+				"url": "http://localhost:8080/alfresco/api/-default-/public/alfresco/versions/1/nodes/-my-/children",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "filedata",
+							"value": "",
+							"type": "file"
+						},
+						{
+							"key": "name",
+							"value": "lorem.odt",
+							"type": "text"
+						},
+						{
+							"key": "relativePath",
+							"value": "My Folder",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3 - Navigate to a folder",
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/alfresco/api/-default-/public/alfresco/versions/1/nodes/-my-/children?relativePath=My Folder",
+					"protocol": "http",
+					"auth": {},
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"alfresco",
+						"api",
+						"-default-",
+						"public",
+						"alfresco",
+						"versions",
+						"1",
+						"nodes",
+						"-my-",
+						"children"
+					],
+					"query": [
+						{
+							"key": "relativePath",
+							"value": "My Folder",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "filedata",
+							"value": "",
+							"type": "file"
+						},
+						{
+							"key": "name",
+							"value": "lorem.odt",
+							"type": "text"
+						},
+						{
+							"key": "relativePath",
+							"value": "My Folder",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "4 - Show versions",
+			"request": {
+				"url": "http://localhost:8080/alfresco/api/-default-/public/alfresco/versions/1/nodes/0a3f5195-4884-49bb-b1ac-9526dd489198/versions",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "filedata",
+							"value": "",
+							"type": "file"
+						},
+						{
+							"key": "name",
+							"value": "lorem.odt",
+							"type": "text"
+						},
+						{
+							"key": "relativePath",
+							"value": "My Folder",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "5 - Update content as major version",
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/alfresco/api/-default-/public/alfresco/versions/1/nodes/0a3f5195-4884-49bb-b1ac-9526dd489198/content?majorVersion=true&comment=First version",
+					"protocol": "http",
+					"auth": {},
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"alfresco",
+						"api",
+						"-default-",
+						"public",
+						"alfresco",
+						"versions",
+						"1",
+						"nodes",
+						"0a3f5195-4884-49bb-b1ac-9526dd489198",
+						"content"
+					],
+					"query": [
+						{
+							"key": "majorVersion",
+							"value": "true",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "comment",
+							"value": "First version",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "This is the initial content for the file."
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "6 - Revert to initial version",
+			"request": {
+				"url": "http://localhost:8080/alfresco/api/-default-/public/alfresco/versions/1/nodes/0a3f5195-4884-49bb-b1ac-9526dd489198/versions/1.0/revert",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"majorVersion\" : true,\n   \"comment\" : \"Back to initial version\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "7 - Create person",
+			"request": {
+				"url": "http://localhost:8080/alfresco/api/-default-/public/alfresco/versions/1/people",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"jdoe\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"jdoe\",\n  \"skypeId\": \"johndoe_skype\",\n  \"jobTitle\": \"Software Engineer\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "8 - List people",
+			"request": {
+				"url": "http://localhost:8080/alfresco/api/-default-/public/alfresco/versions/1/people",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic amRvZTpqZG9l",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "9 - List audit apps",
+			"request": {
+				"url": "http://localhost:8080/alfresco/s/api/audit/control",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "10 - List audit entries for an app",
+			"request": {
+				"url": "http://localhost:8080/alfresco/s/api/audit/query/Alfresco Tagging Service/tagging",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "11 - Create group",
+			"request": {
+				"url": "http://localhost:8080/alfresco/s/api/rootgroups/TTL_TEST_GROUP",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"displayName\" : \"TTL Test Group\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "12 - List groups",
+			"request": {
+				"url": "http://localhost:8080/alfresco/s/api/groups",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "13 - List dictionary",
+			"request": {
+				"url": "http://localhost:8080/alfresco/s/api/dictionary",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "14 - Describe person type",
+			"request": {
+				"url": "http://localhost:8080/alfresco/s/api/defclasses/cm/person",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "15 - Create folder rule",
+			"request": {
+				"url": "http://localhost:8080/alfresco/s/api/node/workspace/SpacesStore/80737ff3-6fb3-44c1-994d-d299b074aad9/ruleset/rules",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \n   \"id\":\"\",\n   \"action\":{  \n      \"actionDefinitionName\":\"composite-action\",\n      \"conditions\":[  \n         {  \n            \"conditionDefinitionName\":\"no-condition\",\n            \"parameterValues\":{  \n\n            }\n         }\n      ],\n      \"actions\":[  \n         {  \n            \"actionDefinitionName\":\"add-features\",\n            \"parameterValues\":{  \n               \"aspect-name\":\"cm:taggable\"\n            }\n         }\n      ]\n   },\n   \"title\":\"Sample rule\",\n   \"description\":\"\",\n   \"disabled\":false,\n   \"applyToChildren\":false,\n   \"executeAsynchronously\":false,\n   \"ruleType\":[  \n      \"inbound\"\n   ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "16 - List folder rules",
+			"request": {
+				"url": "http://localhost:8080/alfresco/s/api/node/workspace/SpacesStore/80737ff3-6fb3-44c1-994d-d299b074aad9/ruleset/rules",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "17 - Search by type",
+			"request": {
+				"url": "http://localhost:8080/alfresco/api/-default-/public/search/versions/1/search",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r  \"query\": {\r    \"query\": \"TYPE:\\\"cm:content\\\"\"\r  }\r}\r"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "18 - Search in content",
+			"request": {
+				"url": "http://localhost:8080/alfresco/api/-default-/public/search/versions/1/search",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"query\": \"lorem\"\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "19 - Search using AFTS",
+			"request": {
+				"url": "http://localhost:8080/alfresco/api/-default-/public/search/versions/1/search",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"query\": \"lorem\"\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "20 - Search using LUCENE",
+			"request": {
+				"url": "http://localhost:8080/alfresco/api/-default-/public/search/versions/1/search",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"query\": \"lorem\"\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "21 - Search using CMIS",
+			"request": {
+				"url": "http://localhost:8080/alfresco/api/-default-/public/search/versions/1/search",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"query\": \"lorem\"\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "22 - Create content with rendition (PDF)",
+			"request": {
+				"url": "http://localhost:8080/alfresco/api/-default-/public/alfresco/versions/1/nodes/-my-/children",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "filedata",
+							"type": "file",
+							"src": "lorem.odt"
+						},
+						{
+							"key": "name",
+							"value": "lorem-rendition.odt",
+							"type": "text"
+						},
+						{
+							"key": "relativePath",
+							"value": "My Folder",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "renditions",
+							"value": "pdf",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "22 - Create content with rendition (IMG) ",
+			"request": {
+				"url": "http://localhost:8080/alfresco/api/-default-/public/alfresco/versions/1/nodes/-my-/children",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "filedata",
+							"type": "file",
+							"src": "lorem.odt"
+						},
+						{
+							"key": "name",
+							"value": "lorem-rendition.odt",
+							"type": "text"
+						},
+						{
+							"key": "relativePath",
+							"value": "My Folder",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "renditions",
+							"value": "pdf",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
