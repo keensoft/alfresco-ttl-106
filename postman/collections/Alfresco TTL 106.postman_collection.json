@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "Alfresco TTL 106",
-		"_postman_id": "fffc506d-eada-f43a-c7d2-4e20335ad606",
+		"_postman_id": "4ce6e678-625d-9881-33aa-da8f3ae75b21",
 		"description": "Samples used during Alfresco Tech Talk Live 106",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -75,7 +75,6 @@
 				"url": {
 					"raw": "http://localhost:8080/alfresco/api/-default-/public/alfresco/versions/1/nodes/-my-/children?relativePath=My Folder",
 					"protocol": "http",
-					"auth": {},
 					"host": [
 						"localhost"
 					],
@@ -178,7 +177,6 @@
 				"url": {
 					"raw": "http://localhost:8080/alfresco/api/-default-/public/alfresco/versions/1/nodes/0a3f5195-4884-49bb-b1ac-9526dd489198/content?majorVersion=true&comment=First version",
 					"protocol": "http",
-					"auth": {},
 					"host": [
 						"localhost"
 					],
@@ -284,7 +282,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -301,7 +302,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -318,7 +322,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -360,7 +367,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -377,7 +387,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -394,7 +407,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -436,7 +452,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -584,7 +603,8 @@
 						{
 							"key": "filedata",
 							"type": "file",
-							"src": "lorem.odt"
+							"src": "lorem.odt",
+							"value": ""
 						},
 						{
 							"key": "name",
@@ -610,7 +630,7 @@
 			"response": []
 		},
 		{
-			"name": "22 - Create content with rendition (IMG) ",
+			"name": "23 - Create content with rendition (IMG)",
 			"request": {
 				"url": "http://localhost:8080/alfresco/api/-default-/public/alfresco/versions/1/nodes/-my-/children",
 				"method": "POST",
@@ -627,7 +647,8 @@
 						{
 							"key": "filedata",
 							"type": "file",
-							"src": "lorem.odt"
+							"src": "lorem.odt",
+							"value": ""
 						},
 						{
 							"key": "name",
@@ -642,7 +663,7 @@
 						},
 						{
 							"key": "renditions",
-							"value": "pdf",
+							"value": "doclib",
 							"description": "",
 							"type": "text"
 						}
