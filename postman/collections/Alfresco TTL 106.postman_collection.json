@@ -529,7 +529,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"query\": {\n    \"query\": \"lorem\"\n  }\n}"
+					"raw": "{\n  \"query\": {\n    \"query\": \"lorem AND TYPE:\\\"cm:content\\\"\",\n    \"language\": \"afts\"\n  }\n}"
 				},
 				"description": ""
 			},
@@ -554,7 +554,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"query\": {\n    \"query\": \"lorem\"\n  }\n}"
+					"raw": "{\n  \"query\": {\n    \"query\": \"+lorem +TYPE:\\\"cm:content\\\"\",\n    \"language\": \"lucene\"\n  }\n}"
 				},
 				"description": ""
 			},
@@ -579,7 +579,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"query\": {\n    \"query\": \"lorem\"\n  }\n}"
+					"raw": "{ \n  \"query\": { \n    \"query\": \"select * from cmis:document WHERE CONTAINS('lorem')\", \n    \"language\": \"cmis\" \n  } \n}"
 				},
 				"description": ""
 			},
